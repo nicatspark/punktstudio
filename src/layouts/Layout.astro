@@ -12,8 +12,16 @@ const { title } = Astro.props
 <html lang='en'>
   <Basehead title={title} />
   <body>
-    <slot />
-    <Footer />
-    <Header />
-  </body></html
->
+    <div class='height-control'>
+      <slot />
+      <Footer />
+      <Header />
+    </div>
+    <style lang='scss'>
+      .height-control {
+        min-height: calc(100dvh - var(--header-height));
+        position: relative;
+      }
+    </style></body
+  >
+</html>
