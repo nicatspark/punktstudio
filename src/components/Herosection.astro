@@ -15,7 +15,15 @@ import Button from './Button.astro'
     src='/assets/interiordesign_hero.webp'
   />
   <div class='hero__content'>
-    <div><slot /><Button href='/about' rarrow='true'>Tell me more</Button></div>
+    <div
+      ><slot /><div class='buttons'
+        ><Button primary href='/about' rarrow='true'>
+          Tell me more
+        </Button><Button secondary href='/contact' rarrow='true'>
+          Nah, I feel brave
+        </Button></div
+      ></div
+    >
   </div>
 </div>
 <style lang='scss'>
@@ -39,6 +47,14 @@ import Button from './Button.astro'
       align-items: center;
       justify-content: space-around;
       height: 100%;
+      .buttons {
+        display: none;
+        flex-flow: column;
+        gap: 0.4em;
+        @media screen and (min-width: 756px) {
+          display: flex;
+        }
+      }
     }
   }
 </style>

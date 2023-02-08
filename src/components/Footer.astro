@@ -1,0 +1,45 @@
+---
+---
+
+<div class='main footer'>
+  <div class='footer__page columns'>
+    <div class='footer__page-column'>Studiopunkt</div>
+    <div class='footer__page-column'
+      >Adress: asd street 100<br />Tel: 0899229759 / 0899667261<br /><a
+        href='mailto:info@studiopunkt.bg'>info@studiopunkt.bg</a
+      ></div
+    >
+    <div class='footer__page-column'
+      >Polly Georgieva<br /><a href='mailto:polly@studiopunkt.bg'
+        >polly@studiopunkt.bg</a
+      ><br /><br />Denitsa Nikolova<br /><a href='mailto:denitsa@studiopunkt.bg'
+        >denitsa@studiopunkt.bg</a
+      ></div
+    >
+  </div>
+</div>
+<style lang='scss'>
+  .footer {
+    background-color: #333;
+    color: white;
+  }
+
+  .footer__page {
+    width: 100%;
+    max-width: var(--max-width);
+    & > .footer__page-column {
+      font-size: 0.9rem;
+      line-height: 1.5em;
+      padding: 0 1rem;
+      a {
+        color: white;
+      }
+    }
+    & > .footer__page-column + .footer__page-column {
+      border-left: 1px solid white;
+    }
+  }
+  .main:has(.footer__page) {
+    margin-top: 4rem;
+  }
+</style>

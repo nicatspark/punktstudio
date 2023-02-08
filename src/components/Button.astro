@@ -1,31 +1,49 @@
 ---
-const { href, rarrow, larrow } = Astro.props
+const {
+  href,
+  rarrow,
+  larrow,
+  class: classname,
+  primary = true,
+  secondary,
+  id,
+} = Astro.props
 ---
 
-<button id='herobutton' data-href={href}
-  >{larrow && <span>&larr;</span>}<slot />{
-    rarrow && <span>&rarr;</span>
-  }</button
+<a
+  href={href}
+  id={id}
+  class={`fluid-font ${classname} ${primary && !secondary && 'primary'} ${
+    secondary && 'secondary'
+  }`}
+  data-href={href}
+  >{larrow && !secondary && <span>&larr;</span>}<slot />{
+    rarrow && !secondary && <span>&rarr;</span>
+  }</a
 >
-<script>
-  function handleClick(e: Event) {
-    const url = (e.target as HTMLButtonElement)?.dataset.href
-    if (!url) return
-    document.location.href = url
-  }
-  document.getElementById('herobutton')?.addEventListener('click', handleClick)
-</script>
-<style>
-  #herobutton {
-    background-color: var(--cta-color);
-    color: white;
-    border-radius: 1rem;
-    height: 2rem;
+<style lang='scss'>
+  a {
+    text-decoration: none;
+    border-radius: 1em;
+    height: 2em;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.2em 1em;
     display: flex;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-      sans-serif;
+    user-select: none;
+    &.primary {
+      background-color: var(--cta-color);
+      color: white;
+    }
+    &.secondary {
+      background-color: transparent;
+      color: var(--dark-text);
+      font-style: italic;
+    }
+
+    & > span {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+        sans-serif;
+    }
   }
 </style>

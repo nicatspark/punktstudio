@@ -1,6 +1,10 @@
 ---
 import '../styles/global.scss'
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS } from '../config'
 
+export interface Props {
+  title: string
+}
 const { title } = Astro.props
 ---
 
@@ -9,11 +13,8 @@ const { title } = Astro.props
   <meta name='viewport' content='width=device-width' />
   <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
   <meta name='generator' content={Astro.generator} />
-  <title>{title}</title>
-  <link rel='preconnect' href='https://fonts.googleapis.com' />
-  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-  <link
-    href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
-    rel='stylesheet'
-  />
+  <title>{`${SITE_TITLE} - ${title}`}</title>
+  <meta name='keywords' content={SITE_KEYWORDS} />
+  <meta name='description' content={SITE_DESCRIPTION} />
+  <meta name='author' content='' />
 </head>
