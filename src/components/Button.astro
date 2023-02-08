@@ -6,6 +6,7 @@ const {
   class: classname,
   primary = true,
   secondary,
+  size = 'large',
   id,
 } = Astro.props
 ---
@@ -14,22 +15,32 @@ const {
   href={href}
   id={id}
   class={`fluid-font ${classname} ${primary && !secondary && 'primary'} ${
-    secondary && 'secondary'
-  }`}
+    size === 'medium' && 'medium'
+  } ${secondary && 'secondary'}`}
   data-href={href}
-  >{larrow && !secondary && <span>&larr;</span>}<slot />{
+  >{larrow && !secondary && <span>&larr;</span>}<span><slot /></span>{
     rarrow && !secondary && <span>&rarr;</span>
   }</a
 >
 <style lang='scss'>
   a {
     text-decoration: none;
-    border-radius: 1em;
-    height: 2em;
     border: none;
-    padding: 0.2em 1em;
     display: flex;
     user-select: none;
+    height: 3em;
+    padding: 0.7em 1em;
+    border-radius: 1.5em;
+
+    & > span {
+      width: 100%;
+      text-align: center;
+    }
+    .medium {
+      border-radius: 1em;
+      height: 2em;
+      padding: 0.2em 1em;
+    }
     &.primary {
       background-color: var(--cta-color);
       color: white;
