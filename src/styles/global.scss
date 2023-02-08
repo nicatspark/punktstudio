@@ -69,6 +69,7 @@ hr {
   place-items: center;
   & > article {
     max-width: var(--max-width);
+    width: 100%;
     margin-inline: auto;
   }
   &:has(.hero) {

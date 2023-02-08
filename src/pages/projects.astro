@@ -1,0 +1,65 @@
+---
+import HerosectionSimple from '../components/HerosectionSimple.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Projects'>
+  <div class='main'>
+    <HerosectionSimple src='/assets/about.webp' />
+  </div>
+  <div class='main'>
+    <article
+      ><h1>Projects</h1>
+      <p>Projects goes here.</p>
+    </article></div
+  >
+</Layout>
+<style lang='scss'>
+  article > p {
+    max-width: 80ch;
+    line-height: 1.8em;
+  }
+
+  .vcard {
+    isolation: isolate;
+    min-height: 300px;
+    & > div {
+      --filter: blur(2px);
+      --transform: scale(0.98) translateY(3%);
+      --bg-color: hsl(0 0% 0% / 0.2);
+      --blur: blur(2px);
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 1rem;
+      height: 100%;
+      box-shadow: 3px 3px 8px hsl(0 0% 0% / 0.1);
+      position: relative;
+      background-color: white;
+      padding: 2rem;
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--bg-color);
+        rotate: 2deg;
+        transform: var(--transform);
+        filter: var(--blur);
+        transform-origin: center;
+        z-index: -1;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--bg-color);
+        rotate: -2deg;
+        transform: var(--transform);
+        filter: var(--blur);
+        transform-origin: center;
+        z-index: -1;
+      }
+    }
+  }
+</style>
