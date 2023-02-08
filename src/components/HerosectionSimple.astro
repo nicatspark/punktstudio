@@ -1,0 +1,19 @@
+---
+const { src } = Astro.props
+---
+
+<div class='hero'>
+  <img loading='lazy' role='presentation' src={src} />
+</div>
+<style lang='scss'>
+  .hero {
+    max-width: 1300px;
+    margin-inline: auto;
+    width: 100%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: max(30vh, 350px);
+    }
+  }
+</style>
