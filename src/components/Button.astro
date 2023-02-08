@@ -1,0 +1,31 @@
+---
+const { href, rarrow, larrow } = Astro.props
+---
+
+<button id='herobutton' data-href={href}
+  >{larrow && <span>&larr;</span>}<slot />{
+    rarrow && <span>&rarr;</span>
+  }</button
+>
+<script>
+  function handleClick(e: Event) {
+    const url = (e.target as HTMLButtonElement)?.dataset.href
+    if (!url) return
+    document.location.href = url
+  }
+  document.getElementById('herobutton')?.addEventListener('click', handleClick)
+</script>
+<style>
+  #herobutton {
+    background-color: var(--cta-color);
+    color: white;
+    border-radius: 1rem;
+    height: 2rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    display: flex;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif;
+  }
+</style>

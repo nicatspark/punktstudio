@@ -1,0 +1,47 @@
+---
+---
+
+<header>
+  <div class='logo'>studiopunkt</div>
+  <nav>
+    <ul>
+      <li><a href='#'>Home</a></li>
+      <li><a href='#'>About</a></li>
+      <li><a href='#'>Projects</a></li>
+      <li><a href='#'>Published</a></li>
+      <li><a href='#'>Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<style lang='scss'>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--header-bg);
+    .logo {
+      font-size: 1.75rem;
+    }
+    nav {
+      ul {
+        display: flex;
+        list-style-type: none;
+        gap: 1rem;
+
+        li a {
+          text-decoration: none;
+          color: var(--dark-text);
+          font-size: 0.72rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+</style>

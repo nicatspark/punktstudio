@@ -1,81 +1,160 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from '../layouts/Layout.astro'
+import Herosection from '../components/Herosection.astro'
+import Header from '../components/Header.astro'
+import Card from '../components/Card.astro'
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout title='Welcome to Studiopunkt - Interior Design company.'>
+  <div class='main'>
+    <Herosection>
+      <p class='fluid-font'
+        >We are an interior decorator company that provides the highest quality
+        services to clients looking to elevate their space. Our team of
+        experienced designers and decorators work with you to create a
+        personalized look that reflects your style and budget.</p
+      >
+    </Herosection>
+  </div>
+  <div class='main'>
+    <article>
+      <p class='intro2 fluid-font'
+        >We offer a variety of services, from simple color changes to complete
+        room renovations, to help you create the perfect space for your needs.
+        With our help, you can turn any room into a beautiful, inviting space.</p
+      >
+      <ul class='aside columns'>
+        <Card
+          title='Interior decoration'
+          body='Selection of furniture, artwork, and other decorative objects to enhance the aesthetic of a space. '
+          href='/'
+        />
+        <Card
+          title='Interior design'
+          body='The creation of a space through the manipulation of space, colour, texture, and lighting. '
+          href='/'
+        />
+        <Card
+          title='Space planning'
+          body='Arrangement and organization of furniture, furnishings, and other objects within a space to maximize the use of the space and create a desired atmosphere.'
+          href='/'
+        />
+      </ul>
+    </article>
+  </div>
+  <div class='main footer'>
+    <div class='footer__page columns'>
+      <div class='footer__page-column'>Studiopunkt</div>
+      <div class='footer__page-column'
+        >Adress: asd street 100<br />Tel: +35 123456</div
+      >
+      <div class='footer__page-column'
+        >Name Namsson<br /><a href='mailto:name@nameson.bg'>name@nameson.bg</a
+        ><br /><br />Name2 Namsson2<br /><a href='mailto:name@nameson.bg'
+          >name@nameson.bg</a
+        ></div
+      >
+    </div>
+  </div>
+  <Header />
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+<style lang='scss'>
+  .main {
+    margin: auto;
+    padding: 1.5rem;
+    display: grid;
+    place-items: center;
+    & > article {
+      max-width: var(--max-width);
+      margin-inline: auto;
+    }
+    &:has(.hero) {
+      background: #333;
+      padding: 0;
+    }
+    .hero {
+      max-width: 1300px;
+      margin-inline: auto;
+    }
+  }
+
+  .intro2 {
+    margin: 3rem 0;
+    max-width: 70%;
+  }
+
+  ul.aside {
+    width: 100%;
+    gap: 1rem;
+    padding: 0;
+    & > div {
+      width: 100%;
+    }
+  }
+
+  .main:has(.footer__page) {
+    margin-top: 4rem;
+  }
+  .footer__page {
+    width: 100%;
+    max-width: var(--max-width);
+    & > .footer__page-column {
+      font-size: 0.9rem;
+      line-height: 1.5em;
+      padding: 0 1rem;
+      a {
+        color: white;
+      }
+    }
+    & > .footer__page-column + .footer__page-column {
+      border-left: 1px solid white;
+    }
+  }
+
+  .footer {
+    background-color: #333;
+    color: white;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+
+    & code {
+      font-size: 0.875em;
+      font-weight: bold;
+      background: rgba(var(--accent), 12%);
+      color: rgb(var(--accent));
+      border-radius: 4px;
+      padding: 0.3em 0.45em;
+    }
+
+    & strong {
+      color: rgb(var(--accent));
+    }
+  }
+
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
 </style>

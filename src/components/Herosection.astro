@@ -1,0 +1,44 @@
+---
+import Button from './Button.astro'
+---
+
+<div class='hero'>
+  <img
+    loading='lazy'
+    role='presentation'
+    sizes='(max-width: 600px) 1000px,
+          1400px'
+    srcset='
+          /assets/interiordesign_hero_mobile.webp 1000w,
+          /assets/interiordesign_hero.webp 1400w,
+          '
+    src='/assets/interiordesign_hero.webp'
+  />
+  <div class='hero__content'>
+    <div><slot /><Button href='/about' rarrow='true'>Tell me more</Button></div>
+  </div>
+</div>
+<style lang='scss'>
+  .hero {
+    position: relative;
+  }
+  .hero__content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 54%;
+    right: 18%;
+    backdrop-filter: blur(3px);
+    background-color: hsl(240deg 7% 97% / 0.3);
+    border-right: 1px solid hsl(0 0% 100% / 0.3);
+    border-left: 1px solid hsl(0 0% 100% / 0.3);
+    & > div {
+      padding: 1rem;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+    }
+  }
+</style>
