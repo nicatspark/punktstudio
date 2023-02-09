@@ -8,22 +8,30 @@ const {
   secondary,
   size = 'large',
   id,
+  tooltip,
+  type = 'a',
 } = Astro.props
+
+const Tag = type === 'submit' ? 'button' : 'a'
 ---
 
-<a
+<Tag
+  data-tool-tip={tooltip}
+  type={type === 'submit' ? 'submit' : undefined}
   href={href}
   id={id}
   class={`fluid-font ${classname} ${primary && !secondary && 'primary'} ${
     size === 'medium' && 'medium'
   } ${secondary && 'secondary'}`}
   data-href={href}
-  >{larrow && !secondary && <span class='arrow'>&larr;</span>}<span
-    ><slot /></span
-  >{rarrow && !secondary && <span class='arrow'>&rarr;</span>}</a
 >
+  {larrow && !secondary && <span class='arrow'>&larr;</span>}<span
+    ><slot /></span
+  >{rarrow && !secondary && <span class='arrow'>&rarr;</span>}
+</Tag>
 <style lang='scss'>
-  a {
+  a,
+  button {
     text-decoration: none;
     border: none;
     display: flex;

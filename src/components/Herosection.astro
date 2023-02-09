@@ -19,7 +19,13 @@ import Button from './Button.astro'
       ><slot /><div class='buttons'
         ><Button primary href='/about' rarrow='true' size='medium'>
           Tell me more
-        </Button><Button secondary href='/contact' rarrow='true' size='medium'>
+        </Button><Button
+          tooltip='Skip the sales pitch, lets talk'
+          secondary
+          href='/contact'
+          rarrow='true'
+          size='medium'
+        >
           Nah, I feel brave
         </Button></div
       ></div
