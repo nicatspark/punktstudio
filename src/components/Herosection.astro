@@ -35,18 +35,28 @@ import Button from './Button.astro'
 <style lang='scss'>
   .hero {
     position: relative;
+    height: 80vh;
     img {
       aspect-ratio: 1471 / 670;
+      object-fit: cover;
+      height: 80vh;
+    }
+    @media screen and (min-width: 756px) {
+      height: unset;
+      img {
+        object-fit: none;
+        height: unset;
+      }
     }
   }
   .hero__content {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 54%;
-    right: 18%;
+    left: 0;
+    right: 0;
     backdrop-filter: blur(3px);
-    background-color: hsl(240deg 7% 97% / 0.3);
+    background-color: hsl(240deg 7% 0% / 0.2);
     border-right: 1px solid hsl(0 0% 100% / 0.3);
     border-left: 1px solid hsl(0 0% 100% / 0.3);
     & > div {
@@ -57,13 +67,21 @@ import Button from './Button.astro'
       justify-content: space-around;
       height: 100%;
       .buttons {
-        display: none;
+        display: flex;
         flex-flow: column;
         gap: 0.4em;
+        transform: scale(2);
         @media screen and (min-width: 756px) {
           display: flex;
+          transform: unset;
         }
       }
+    }
+
+    @media screen and (min-width: 756px) {
+      left: 54%;
+      right: 18%;
+      background-color: hsl(240deg 7% 97% / 0.3);
     }
   }
 </style>

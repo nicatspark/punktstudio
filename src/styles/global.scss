@@ -94,8 +94,11 @@ hr {
 
 .fluid-font {
   line-height: 1.6em;
-  font-size: clamp(0.7rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.7rem, 3vw, 1.2rem);
   font-weight: 400;
+  @media screen and (min-width: 756px) {
+    font-size: clamp(0.7rem, 1.5vw, 1.2rem);
+  }
 }
 
 a {

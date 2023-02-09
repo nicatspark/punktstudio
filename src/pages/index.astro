@@ -53,7 +53,13 @@ import { INTRO1, INTRO2 } from '../config'
 <style lang='scss'>
   .intro1 {
     font-weight: 600;
-    color: var(--medium-dark);
+    color: white;
+    text-shadow: 0 0 5px hsl(0 0% 0% / 0.2);
+    font-size: 1.5rem;
+    @media screen and (min-width: 756px) {
+      font-size: unset;
+      color: var(--medium-dark);
+    }
   }
   .intro2 {
     margin: 0 0 3em 0;
