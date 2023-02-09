@@ -2,15 +2,23 @@
 ---
 
 <header>
-  <div class='logo'>Punkt Studio</div>
-  <nav>
-    <ul>
-      <li><a href='/'>Home</a></li>
-      <li><a href='/about'>About</a></li>
-      <li><a href='/projects'>Projects</a></li>
-      <li><a href='/contact'>Contact</a></li>
-    </ul>
-  </nav>
+  <div class='logo'><a href='#navigation'>Punkt Studio</a></div>
+  <div id='mobile-wrapper'>
+    <button aria-label='User menu' aria-haspopup='true'>menu</button>
+    <nav
+      id='navigation'
+      role='menu'
+      aria-orientation='vertical'
+      aria-labelledby='user-menu'
+    >
+      <ul role='menu' aria-labelledby='user-menu'>
+        <li><a href='/' role='menuitem'>Home</a></li>
+        <li><a href='/about' role='menuitem'>About</a></li>
+        <li><a href='/projects' role='menuitem'>Projects</a></li>
+        <li><a href='/contact' role='menuitem'>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 <style lang='scss'>
   header {
@@ -26,19 +34,71 @@
     background-color: var(--header-bg);
     .logo {
       font-size: 1.75rem;
+      a {
+        text-decoration: none;
+        color: black;
+      }
     }
-    nav {
-      ul {
-        display: flex;
-        list-style-type: none;
-        gap: 1rem;
+    #mobile-wrapper {
+      & > button:focus ~ nav,
+      button ~ nav:focus-within {
+        transform: translateX(0%);
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        bottom: 0;
+        background-color: hsl(59deg 11% 64%);
+        transition: transform 300ms ease-out;
+        width: min(80vw, 350px);
+        &:focus {
+          transform: translateX(0%);
+        }
+        ul {
+          display: flex;
+          list-style-type: none;
+          gap: 1rem;
+          flex-flow: column;
+          font-size: 1.7rem;
 
-        li a {
-          text-decoration: none;
-          color: var(--dark-text);
-          font-size: 0.72rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
+          li {
+            margin-bottom: 1rem;
+            a {
+              text-decoration: none;
+              color: var(--dark-text);
+              text-shadow: 1px 1px 0 hsl(0deg 0% 100% / 34%);
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+      @media screen and (min-width: 756px) {
+        display: contents;
+        & > button {
+          display: none;
+          &:focus ~ nav,
+          button ~ nav:focus-within {
+            transform: unset;
+          }
+        }
+        nav {
+          position: static;
+          top: unset;
+          right: unset;
+          transform: unset;
+          bottom: unset;
+          background-color: transparent;
+          width: unset;
+          ul {
+            flex-flow: row;
+            font-size: 0.72rem;
+            li {
+              margin-bottom: unset;
+            }
+          }
         }
       }
     }
