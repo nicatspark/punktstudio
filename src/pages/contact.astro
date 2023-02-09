@@ -30,7 +30,7 @@ import Layout from '../layouts/Layout.astro'
           ></div
         >
 
-        <form id='form' action='#' onsubmit='return false;'>
+        <form id='form' onsubmit='return false;'>
           <div class='columns'>
             <fieldset>
               <label for='name'>Name<sup>*</sup></label>
@@ -61,7 +61,32 @@ import Layout from '../layouts/Layout.astro'
         </form>
       </div>
     </article></div
-  >
+  ><script>
+    const get = (id: string): HTMLInputElement | Record<'value', string> =>
+      (document.getElementById(id) as HTMLInputElement | undefined) || {
+        value: '',
+      }
+    const saveInput = () => {
+      const store = Object.create(null)
+      store.name = get('name')?.value
+      store.surname = get('surname')?.value
+      store.email = get('email')?.value
+      store.tel = get('tel')?.value
+      localStorage.setItem('contactinfo', JSON.stringify(store))
+    }
+    const retrieveInfo = () => {
+      const store = JSON.parse(localStorage.getItem('contactinfo') || '{}')
+      get('name').value = store.name || ''
+      get('surname').value = store.surname || ''
+      get('email').value = store.email || ''
+      get('tel').value = store.tel || ''
+    }
+    window.onload = () => {
+      retrieveInfo()
+      ;[...document.querySelectorAll('input')][0]?.focus()
+      document.querySelector('form')?.addEventListener('submit', saveInput)
+    }
+  </script>
 </Layout>
 <style lang='scss'>
   article > p {
@@ -85,7 +110,7 @@ import Layout from '../layouts/Layout.astro'
       position: relative;
     }
     textarea {
-      min-height: 3rem;
+      min-height: 8rem;
     }
     label {
       text-transform: uppercase;

@@ -1,4 +1,7 @@
 ---
+const apikey = import.meta.env.PUBLIC_GMAPSKEY
+console.log('apikey', apikey)
+const src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&callback=initMap&v=weekly`
 ---
 
 <div id='map'></div>
@@ -22,14 +25,10 @@
 
   window.initMap = initMap
 </script>
-<script
-  is:inline
-  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBF5VoJ54Kz4IC4WgGQC1kIF2WW4tH4pv4&callback=initMap&v=weekly'
-  defer
-></script>
+<script is:inline defer src={src}></script>
 <style>
   #map {
     width: 100%;
-    min-height: 10rem;
+    min-height: 20rem;
   }
 </style>
