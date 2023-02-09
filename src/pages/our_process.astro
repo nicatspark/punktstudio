@@ -1,0 +1,92 @@
+---
+import HerosectionSimple from '../components/HerosectionSimple.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Projects'>
+  <div class='main'>
+    <HerosectionSimple src='/assets/about.webp' />
+  </div>
+  <div class='main'>
+    <article
+      ><h1>Our process</h1>
+      <p
+        >This is a general overview of the interior design process, but each
+        project is unique, and the specifics may vary depending on the size and
+        complexity of the project. The most important thing for us is to have
+        open and clear communication with our client throughout the process to
+        ensure that the end result meets their expectations and exceeds them.</p
+      >
+      <ol>
+        <li
+          ><strong>Initial Meeting:</strong> During the first meeting with a client,
+          we listen to their needs, preferences, and goals for the space. We ask
+          questions to understand their style, budget, and timeline, and we explain
+          our design process. We also discuss our fees and any other important details.</li
+        >
+
+        <li
+          ><strong>Site Survey:</strong> We visit the space and take detailed measurements,
+          note the existing architectural elements, and assess the condition of the
+          space. We also take note of any important considerations such as natural
+          light, electrical and plumbing locations, and any other factors that may
+          impact the design.</li
+        >
+
+        <li
+          ><strong>Concept Development:</strong> Based on the information gathered
+          during the initial meeting and site survey, we develop several design concepts.
+          These concepts typically include floor plans, elevations, and renderings
+          that show the proposed changes to the space. We also select a palette of
+          colors, materials, and furnishings that reflect the client's style and
+          budget.</li
+        >
+
+        <li
+          ><strong>Presentation and Review:</strong> We present the design concepts
+          to the client and listen to their feedback. We make revisions to the design
+          as needed based on the client's comments and preferences.</li
+        >
+
+        <li
+          ><strong>Design Development:</strong> Once the concept is finalized, we
+          develop a detailed design plan that includes specifications for all materials,
+          finishes, and furnishings. We also create a project timeline and budget,
+          and work with the client to finalize any custom details.</li
+        >
+
+        <li
+          ><strong>Procurement:</strong> We source all the materials, furnishings,
+          and fixtures needed for the project. We coordinate with contractors, craftsmen,
+          and suppliers to ensure that everything is on track and within budget.</li
+        >
+
+        <li
+          ><strong>Installation:</strong> We oversee the installation of the design
+          elements, ensuring that everything is executed according to the design
+          plan. We work closely with the contractors and craftsmen to make sure that
+          the work is done to the highest standards.</li
+        >
+
+        <li
+          ><strong>Delivery:</strong> Finally, we walk the client through the completed
+          space and ensure that they are happy with the final result. We also provide
+          our client with a complete set of as-built drawings and a user guide that
+          includes maintenance and care instructions.</li
+        >
+      </ol>
+    </article></div
+  >
+</Layout>
+<style lang='scss'>
+  article > p {
+    max-width: 80ch;
+    line-height: 1.8em;
+  }
+
+  li {
+    max-width: 80ch;
+    margin-top: 3rem;
+    line-height: 1.6em;
+  }
+</style>
