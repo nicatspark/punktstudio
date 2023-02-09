@@ -1,4 +1,6 @@
 ---
+import IconFacebook from '../assets/svg/IconFacebook.astro'
+import IconInstagram from '../assets/svg/IconInstagram.astro'
 import Button from '../components/Button.astro'
 import GoogleMap from '../components/GoogleMap.astro'
 import HerosectionSimple from '../components/HerosectionSimple.astro'
@@ -17,7 +19,7 @@ import Layout from '../layouts/Layout.astro'
         <div class='vcard'
           ><div>
             <GoogleMap />
-            <p><strong>Punkt Studio</strong></p><p
+            <p><strong>Studiopunkt</strong></p><p
               >Address: Sofia, Bulgaria<br />
               str. William Gladstone 6</p
             >
@@ -26,8 +28,16 @@ import Layout from '../layouts/Layout.astro'
                 href='tel:+359899667261'>+359 899667261</a
               ></p
             >
-            <a href='mailto:info@punktstudio.bg'>info@punktstudio.bg</a></div
-          ></div
+            <a href='mailto:info@studiopunkt.bg'>info@studiopunkt.bg</a>
+            <div>
+              <a href='https://www.facebook.com/studiopunkt.bg'
+                ><IconInstagram /></a
+              >
+              <a href='https://www.instagram.com/studiopunkt.bg/'
+                ><IconFacebook /></a
+              >
+            </div>
+          </div></div
         >
 
         <form id='form' onsubmit='return false;'>

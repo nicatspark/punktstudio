@@ -1,4 +1,4 @@
-# Punkt Studio web site
+# Studiopunkt web site
 
 ## 🚀 Project Structure
 
@@ -22,7 +22,7 @@ Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## [Demo 💥](https://punktstudio.netlify.app)
+## [Demo 💥](https://studiopunkt.netlify.app)
 
 ## 🧞 Commands
 

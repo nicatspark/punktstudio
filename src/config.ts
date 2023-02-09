@@ -1,4 +1,4 @@
-export const SITE_TITLE = 'Welcome to Punkt Studio - Interior Design company'
+export const SITE_TITLE = 'Welcome to Studiopunkt - Interior Design company'
 export const SITE_KEYWORDS =
   'interior design, interior decoration, sofia, bulgaria'
 export const INTRO1 = `We are an interior decorator company that provides the highest quality
