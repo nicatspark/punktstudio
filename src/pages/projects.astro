@@ -1,6 +1,9 @@
 ---
 import HerosectionSimple from '../components/HerosectionSimple.astro'
 import Layout from '../layouts/Layout.astro'
+
+import { getCollection } from 'astro:content'
+const blogEntries = await getCollection('projects')
 ---
 
 <Layout title='Projects'>
@@ -10,7 +13,30 @@ import Layout from '../layouts/Layout.astro'
   <div class='main'>
     <article
       ><h1>Projects</h1>
-      <p>Projects goes here.</p>
+      <p>Some og our projects.</p>
+      <div class='columns'>
+        {
+          blogEntries.map((blogPostEntry) => (
+            <div class='vcard'>
+              <div>
+                <h3>
+                  <a href={`/my-blog-url/${blogPostEntry.slug}`}>
+                    {blogPostEntry.data.title}
+                  </a>
+                </h3>
+                <p>{blogPostEntry.data.description}</p>
+                {blogPostEntry.data.publishedDate && (
+                  <time
+                    datetime={blogPostEntry.data.publishedDate.toISOString()}
+                  >
+                    {blogPostEntry.data.publishedDate.toDateString()}
+                  </time>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </article></div
   >
 </Layout>
@@ -22,7 +48,17 @@ import Layout from '../layouts/Layout.astro'
 
   .vcard {
     isolation: isolate;
-    min-height: 300px;
+    min-height: 150px;
+    h3 {
+      margin: 0;
+      a {
+        text-decoration: none;
+        color: var(--logo-black);
+        &:hover {
+          color: var(--cta-color);
+        }
+      }
+    }
     & > div {
       --filter: blur(2px);
       --transform: scale(0.98) translateY(3%);
