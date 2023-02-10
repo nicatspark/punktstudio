@@ -84,6 +84,10 @@ hr {
   }
 }
 
+.nobrk {
+  white-space: nowrap;
+}
+
 .columns {
   display: grid;
   grid-auto-flow: row;
