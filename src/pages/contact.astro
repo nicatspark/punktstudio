@@ -1,6 +1,7 @@
 ---
 import IconFacebook from '../assets/svg/IconFacebook.astro'
 import IconInstagram from '../assets/svg/IconInstagram.astro'
+import IconLinkedin from '../assets/svg/IconLinkedin.astro'
 import Button from '../components/Button.astro'
 import GoogleMap from '../components/GoogleMap.astro'
 import HerosectionSimple from '../components/HerosectionSimple.astro'
@@ -15,7 +16,7 @@ import Layout from '../layouts/Layout.astro'
     <article
       ><h1>Contact</h1>
       <p>Because we'd love to hear from you.</p>
-      <div class='columns'>
+      <div class='contactpage'>
         <div class='vcard'
           ><div>
             <GoogleMap />
@@ -29,12 +30,15 @@ import Layout from '../layouts/Layout.astro'
               ></p
             >
             <a href='mailto:info@studiopunkt.bg'>info@studiopunkt.bg</a>
-            <div>
+            <div class='social'>
               <a href='https://www.facebook.com/studiopunkt.bg'
                 ><IconInstagram /></a
               >
               <a href='https://www.instagram.com/studiopunkt.bg/'
                 ><IconFacebook /></a
+              >
+              <a href='https://www.linkedin.com/studiopunkt.bg/'
+                ><IconLinkedin /></a
               >
             </div>
           </div></div
@@ -102,6 +106,19 @@ import Layout from '../layouts/Layout.astro'
   article > p {
     max-width: 80ch;
     line-height: 1.8em;
+  }
+
+  .contactpage {
+    display: flex;
+    flex-flow: column-reverse;
+    column-gap: 2rem;
+    row-gap: 4rem;
+    & > * {
+      flex: 1 1 100%;
+    }
+    @media screen and (min-width: 756px) {
+      flex-flow: row;
+    }
   }
 
   form {
@@ -206,6 +223,16 @@ import Layout from '../layouts/Layout.astro'
           }
         }
       }
+    }
+    .social {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 50%;
+      margin-inline: auto;
+      border-top: 1px solid #666;
+      padding-block: 2rem;
+      margin: 2rem auto -1rem auto;
     }
   }
 </style>
