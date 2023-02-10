@@ -14,10 +14,16 @@
       aria-labelledby='user-menu'
     >
       <ul role='menu' aria-labelledby='user-menu'>
-        <li><a href='/' role='menuitem'>Home</a></li>
-        <li><a href='/about' role='menuitem'>About</a></li>
-        <li><a href='/projects' role='menuitem'>Projects</a></li>
-        <li><a href='/contact' role='menuitem'>Contact</a></li>
+        <li><a href='/' role='menuitem' aria-label='home'>Home</a></li>
+        <li><a href='/about' role='menuitem' aria-label='about'>About</a></li>
+        <li
+          ><a href='/projects' role='menuitem' aria-label='projects'>Projects</a
+          ></li
+        >
+        <li
+          ><a href='/contact' role='menuitem' aria-label='contact'>Contact</a
+          ></li
+        >
       </ul>
       <img
         loading='lazy'
@@ -27,6 +33,18 @@
     </nav>
   </div>
 </header>
+<script>
+  function highlightCurrentNavItem() {
+    const path = document.location.pathname.toLowerCase()
+    const current =
+      path.split('/')[1] || (path.split('/')[0] === '' ? 'home' : '')
+    const currentListItem = document.querySelector(
+      `nav li:has(a[aria-label="${current}"])`
+    )
+    currentListItem?.classList.add('active')
+  }
+  window.onload = highlightCurrentNavItem
+</script>
 <style lang='scss'>
   header {
     display: flex;
@@ -88,6 +106,9 @@
 
           li {
             margin-bottom: 1rem;
+            &.active {
+              font-weight: 600;
+            }
             a {
               text-decoration: none;
               color: var(--dark-text);
