@@ -1,0 +1,60 @@
+---
+import HerosectionSimple from '../components/HerosectionSimple.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Projects'>
+  <div class='main'>
+    <HerosectionSimple src='/assets/about.webp' />
+  </div>
+  <div class='main'>
+    <article
+      ><h1>What is interior design?</h1>
+      <p
+        >Interior design is the art and science of shaping the interior spaces
+        of a building to achieve a functional and aesthetically pleasing
+        environment. It involves creating a functional layout, selecting and
+        arranging furniture, choosing color schemes, lighting, textures, and
+        materials, and integrating systems such as heating, cooling, and
+        lighting. The goal of interior design is to create spaces that are not
+        only aesthetically pleasing but also safe, functional, and efficient.</p
+      ><p>
+        Interior designers consider a wide range of factors when designing an
+        interior space, including the intended use of the space, the size and
+        shape of the room, the existing architectural features, the client's
+        lifestyle and preferences, and the surrounding environment. They must
+        also consider ergonomic and safety requirements, accessibility, and
+        environmental sustainability.</p
+      ><p>
+        Interior decoration is a subcategory of interior design that focuses on
+        adding decorative elements to enhance the overall look and feel of a
+        space. It encompasses the selection and placement of items such as
+        furniture, lighting, accessories, color schemes, textures, and materials
+        to create a cohesive and aesthetically pleasing environment. Interior
+        decoration often follows interior design, and is used to bring the
+        design to life and add the final touches that make a space feel
+        complete.</p
+      ><p>
+        In conclusion, interior design and interior decoration are closely
+        related, but they serve different purposes. While interior design is
+        concerned with the functional and structural aspects of creating an
+        interior space, interior decoration is focused on the aesthetic and
+        cosmetic elements that make a space visually appealing and personal.
+        Both are important components of creating a well-designed interior
+        space.</p
+      >
+    </article></div
+  >
+</Layout>
+<style lang='scss'>
+  article > p {
+    max-width: 80ch;
+    line-height: 1.8em;
+  }
+
+  li {
+    max-width: 80ch;
+    margin-top: 3rem;
+    line-height: 1.6em;
+  }
+</style>

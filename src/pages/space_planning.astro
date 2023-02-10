@@ -1,0 +1,53 @@
+---
+import HerosectionSimple from '../components/HerosectionSimple.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Projects'>
+  <div class='main'>
+    <HerosectionSimple src='/assets/about.webp' />
+  </div>
+  <div class='main'>
+    <article
+      ><h1>How does space planning relate to interior design?</h1>
+      <p
+        >Space planning is a crucial aspect of interior design that involves
+        organizing and arranging the layout of an interior space to optimize its
+        functionality and efficiency. It involves analyzing and defining the
+        various activities that will occur within the space, such as work,
+        relaxation, or storage, and determining the best arrangement of
+        furniture and other elements to support those activities.</p
+      ><p>
+        The goal of space planning is to create a harmonious and balanced layout
+        that makes the most efficient use of the available space. To do this,
+        interior designers consider factors such as traffic flow, natural light,
+        and the placement of doors, windows, and electrical outlets. They also
+        take into account the size and scale of furniture and other elements, as
+        well as the desired aesthetic and mood of the space.</p
+      ><p>
+        In space planning, interior designers use a variety of tools and
+        techniques, including floor plans, elevations, and 3D modeling software.
+        They may also use scale models, mock-ups, and prototypes to visualize
+        and test different layouts and configurations.</p
+      ><p>
+        Space planning is a critical aspect of interior design because it sets
+        the foundation for all other design decisions. A well-planned space
+        ensures that the interior is functional, efficient, and comfortable, and
+        provides a solid basis for the addition of decorative elements such as
+        furniture, lighting, and accessories.</p
+      >
+    </article></div
+  >
+</Layout>
+<style lang='scss'>
+  article > p {
+    max-width: 80ch;
+    line-height: 1.8em;
+  }
+
+  li {
+    max-width: 80ch;
+    margin-top: 3rem;
+    line-height: 1.6em;
+  }
+</style>

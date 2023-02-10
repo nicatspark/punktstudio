@@ -1,0 +1,55 @@
+---
+import HerosectionSimple from '../components/HerosectionSimple.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='about interior decoration'>
+  <div class='main'>
+    <HerosectionSimple src='/assets/about.webp' />
+  </div>
+  <div class='main'>
+    <article
+      ><h1>What is interior decoration?</h1>
+      <p
+        >Interior decoration refers to the process of adding finishing touches
+        to an interior space to create a aesthetically pleasing and functional
+        environment. It involves selecting and placing decorative elements such
+        as furniture, lighting, accessories, color schemes, textures, and
+        materials to enhance the overall look and feel of a room.</p
+      ><p>
+        Interior decoration is a subcategory of interior design, which is a
+        broader term that encompasses all aspects of designing and shaping the
+        interior of a building, including the arrangement of spaces, the
+        selection of materials, and the integration of systems such as heating,
+        cooling, and lighting. While interior design involves creating a
+        functional and efficient layout of a space, interior decoration focuses
+        more on the aesthetic and cosmetic aspects of the design.</p
+      ><p>
+        Interior decoration can range from simple updates, such as adding new
+        curtains or cushions, to full-scale renovations, such as redecorating a
+        whole room or multiple rooms in a building. It can also encompass the
+        design of specific features such as fireplaces, mantels, and built-in
+        bookcases.</p
+      ><p>
+        The goal of interior decoration is to create a harmonious and cohesive
+        look and feel within a space. Decorators often draw inspiration from
+        various sources such as nature, art, fashion, or other cultures to
+        create a unique and personalized look. They use color, texture, pattern,
+        and scale to create visual interest and to express the personality of
+        the people who live or work in the space.
+      </p>
+    </article></div
+  >
+</Layout>
+<style lang='scss'>
+  article > p {
+    max-width: 80ch;
+    line-height: 1.8em;
+  }
+
+  li {
+    max-width: 80ch;
+    margin-top: 3rem;
+    line-height: 1.6em;
+  }
+</style>
