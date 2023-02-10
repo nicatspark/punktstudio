@@ -90,6 +90,7 @@ const logoWidth = 150
         width: min(80vw, 350px);
         overflow: hidden;
         img {
+          pointer-events: none;
           position: absolute;
           bottom: 0;
           max-height: 50%;
@@ -129,7 +130,7 @@ const logoWidth = 150
         & > button {
           display: none;
           &:focus ~ nav,
-          button ~ nav:focus-within {
+          & ~ nav:focus-within {
             transform: unset;
           }
         }

@@ -2,25 +2,27 @@
 import Logo from '../assets/svg/Logo.astro'
 
 const logoWidth = 150
+const logoHeight = 34
 ---
 
 <div class='main footer'>
   <div class='footer__page columns'>
     <div class='footer__page-column'
-      ><Logo width={logoWidth} height={(logoWidth * 151) / 378} /></div
+      ><Logo width={logoWidth} height={logoHeight} /></div
     >
     <div class='footer__page-column'
-      >Address: Sofia, Bulgaria<br />str. William Gladstone 6<br /><br />Tel:
+      ><strong>Studiopunkt</strong><br />str. William Gladstone 6<br />Sofia,
+      Bulgaria<br /><br /><i class='fa fa-phone'></i>
       <a href='tel:+359899229759'>+359 899229759</a> / <a
         href='tel:+359 899667261'>+359 899667261</a
-      ><br /><a href='mailto:info@studiopunkt.bg'>info@studiopunkt.bg</a></div
+      ><br /><i class='fa fa-envelope'></i>
+      <a href='mailto:info@studiopunkt.bg'>info@studiopunkt.bg</a></div
     >
     <div class='footer__page-column'
-      >Polly Georgieva<br /><a href='mailto:pollyg@studiopunkt.bg'
-        >pollyg@studiopunkt.bg</a
-      ><br /><br />Denitsa Nikolova<br /><a
-        href='mailto:denitsan@studiopunkt.bg'>denitsan@studiopunkt.bg</a
-      ></div
+      >Polly Georgieva<br /><i class='fa fa-envelope'></i>
+      <a href='mailto:pollyg@studiopunkt.bg'>pollyg@studiopunkt.bg</a><br /><br
+      />Denitsa Nikolova<br /><i class='fa fa-envelope'></i>
+      <a href='mailto:denitsan@studiopunkt.bg'>denitsan@studiopunkt.bg</a></div
     >
   </div>
 </div>
