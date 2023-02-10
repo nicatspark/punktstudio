@@ -1,9 +1,14 @@
 ---
+import Logo from '../assets/svg/Logo.astro'
+
+const logoWidth = 150
 ---
 
 <div class='main footer'>
   <div class='footer__page columns'>
-    <div class='footer__page-column'>Studiopunkt</div>
+    <div class='footer__page-column'
+      ><Logo width={logoWidth} height={(logoWidth * 151) / 378} /></div
+    >
     <div class='footer__page-column'
       >Address: Sofia, Bulgaria<br />str. William Gladstone 6<br /><br />Tel:
       <a href='tel:+359899229759'>+359 899229759</a> / <a

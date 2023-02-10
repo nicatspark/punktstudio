@@ -1,8 +1,13 @@
 ---
+import Logo from '../assets/svg/Logo.astro'
+const logoWidth = 150
 ---
 
 <header>
-  <div class='logo'><a href='/'>Studiopunkt</a></div>
+  <div class='logo'
+    ><a href='/'><Logo width={logoWidth} height={(logoWidth * 73) / 318} /></a
+    ></div
+  >
   <div id='mobile-wrapper'>
     <button aria-label='User menu' aria-haspopup='true'
       ><i class='fa fa-bars'></i></button
