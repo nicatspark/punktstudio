@@ -2,7 +2,7 @@
 ---
 
 <header>
-  <div class='logo'><a href='#navigation'>Studiopunkt</a></div>
+  <div class='logo'><a href='/'>Studiopunkt</a></div>
   <div id='mobile-wrapper'>
     <button aria-label='User menu' aria-haspopup='true'
       ><i class='fa fa-bars'></i></button
@@ -19,6 +19,11 @@
         <li><a href='/projects' role='menuitem'>Projects</a></li>
         <li><a href='/contact' role='menuitem'>Contact</a></li>
       </ul>
+      <img
+        loading='lazy'
+        src='/assets/blueprint_inv.webp'
+        alt='blueprint decoration'
+      />
     </nav>
   </div>
 </header>
@@ -60,6 +65,16 @@
         background-color: hsl(59deg 11% 64%);
         transition: transform 300ms ease-out;
         width: min(80vw, 350px);
+        overflow: hidden;
+        img {
+          position: absolute;
+          bottom: 0;
+          max-height: 50%;
+          mix-blend-mode: color-dodge;
+          rotate: 30deg;
+          transform: scale(2);
+          opacity: 0.2;
+        }
         &:focus {
           transform: translateX(0%);
         }
@@ -100,6 +115,9 @@
           bottom: unset;
           background-color: transparent;
           width: unset;
+          img {
+            display: none;
+          }
           ul {
             flex-flow: row;
             font-size: 0.72rem;
