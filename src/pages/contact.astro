@@ -19,7 +19,7 @@ import Layout from '../layouts/Layout.astro'
       <div class='contactpage'>
         <div class='vcard'
           ><div>
-            <GoogleMap />
+            <!-- <GoogleMap /> -->
             <p
               ><strong>Studiopunkt</strong><br /><br />Address: Sofia, Bulgaria<br
               />
@@ -77,11 +77,15 @@ import Layout from '../layouts/Layout.astro'
         </form>
       </div>
     </article></div
-  ><script>
-    const get = (id: string): HTMLInputElement | Record<'value', string> =>
-      (document.getElementById(id) as HTMLInputElement | undefined) || {
+  ><script is:inline>
+    const get = (id) =>
+      document.getElementById(id) || {
         value: '',
       }
+    const submitForm = () => {
+      saveInput()
+      sendmail()
+    }
     const saveInput = () => {
       const store = Object.create(null)
       store.name = get('name')?.value
@@ -97,10 +101,30 @@ import Layout from '../layouts/Layout.astro'
       get('email').value = store.email || ''
       get('tel').value = store.tel || ''
     }
-    window.onload = () => {
-      retrieveInfo()
-      ;[...document.querySelectorAll('input')][0]?.focus()
-      document.querySelector('form')?.addEventListener('submit', saveInput)
+    const submitBtn = document.querySelector('[type="submit"]')
+    submitBtn?.addEventListener('click', submitForm)
+    retrieveInfo()
+    ;[...document.querySelectorAll('input')][0]?.focus()
+    // window.onload = () => {
+    // }
+
+    // ----
+    const sendmail = async () => {
+      const data = await fetch('/api/sendmail.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'value1',
+          surname: 'value2',
+        }),
+      })
+        .then((res) => res.json())
+        .catch((err) => {
+          console.log('Error', err)
+          throw new Error('Network error.')
+        })
     }
   </script>
 </Layout>
