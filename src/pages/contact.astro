@@ -86,13 +86,19 @@ import Layout from '../layouts/Layout.astro'
       saveInput()
       sendmail()
     }
-    const saveInput = () => {
+    const getFormData = () => {
       const store = Object.create(null)
       store.name = get('name')?.value
       store.surname = get('surname')?.value
       store.email = get('email')?.value
       store.tel = get('tel')?.value
-      localStorage.setItem('contactinfo', JSON.stringify(store))
+      store.subject = get('subject')?.value
+      store.message = get('message')?.value
+      return store
+    }
+    const saveInput = () => {
+      const { message, subject, ...rest } = getFormData()
+      localStorage.setItem('contactinfo', JSON.stringify(rest))
     }
     const retrieveInfo = () => {
       const store = JSON.parse(localStorage.getItem('contactinfo') || '{}')
@@ -110,21 +116,21 @@ import Layout from '../layouts/Layout.astro'
 
     // ----
     const sendmail = async () => {
+      const { name, surname, email, tel, message, subject } = getFormData()
       const data = await fetch('/api/sendmail.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: 'value1',
-          surname: 'value2',
-        }),
+        body: JSON.stringify({ name, surname, email, tel, message, subject }),
       })
         .then((res) => res.json())
+        // .then((data) => console.log(data))
         .catch((err) => {
           console.log('Error', err)
           throw new Error('Network error.')
         })
+      console.log(data)
     }
   </script>
 </Layout>
