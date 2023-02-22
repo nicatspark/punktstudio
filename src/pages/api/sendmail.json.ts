@@ -1,11 +1,8 @@
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
 
-// const data = await import.meta.env.EMAIL;
-
 export const post: APIRoute = async ({ request }) => {
-  console.log('request', request)
-  console.log('email', import.meta.env.EMAIL)
+  // console.log('request', request)
 
   if (request.headers.get('Content-Type') === 'application/json') {
     const formData = await request.json()
@@ -34,17 +31,23 @@ export const post: APIRoute = async ({ request }) => {
 From: ${name} ${surname} • email: ${email} • tel: ${tel}
 `,
     }
-    mailTransporter.sendMail(mailDetails, (error, info) => {
-      if (error) {
-        return console.log(error)
-      }
-      console.log('Message sent: %s', info.messageId)
-    })
+    console.log(
+      '***************************** mailDetails',
+      mailDetails,
+      import.meta.env.EMAIL
+    )
+    // mailTransporter.sendMail(mailDetails, (error, info) => {
+    //   if (error) {
+    //     return console.log(error)
+    //   }
+    //   console.log('Message sent: %s', info.messageId)
+    // })
 
     // return response
     return new Response(
       JSON.stringify({
         message: 'Your name was: ' + name,
+        email: import.meta.env.EMAIL,
       }),
       {
         status: 200,
