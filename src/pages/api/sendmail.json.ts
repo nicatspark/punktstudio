@@ -1,6 +1,9 @@
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
 
+const emailTo = import.meta.env.EMAIL
+const emailToPass = import.meta.env.PASS
+
 export const post: APIRoute = async ({ request }) => {
   // console.log('request', request)
 
@@ -16,15 +19,17 @@ export const post: APIRoute = async ({ request }) => {
     // sendmail
     let mailTransporter = nodemailer.createTransport({
       service: 'gmail',
+      port: 587,
+      secure: false,
       auth: {
-        user: import.meta.env.EMAIL,
-        pass: import.meta.env.PASS,
+        user: emailTo,
+        pass: emailToPass,
       },
     })
 
     let mailDetails = {
       from: email,
-      to: import.meta.env.EMAIL,
+      to: emailTo,
       subject: `${new URL(request.url).hostname}: ${subject}`,
       text: `${message}
 ----------------------------------------------------------------------
@@ -36,12 +41,12 @@ From: ${name} ${surname} • email: ${email} • tel: ${tel}
       mailDetails,
       import.meta.env.EMAIL
     )
-    // mailTransporter.sendMail(mailDetails, (error, info) => {
-    //   if (error) {
-    //     return console.log(error)
-    //   }
-    //   console.log('Message sent: %s', info.messageId)
-    // })
+    mailTransporter.sendMail(mailDetails, (error, info) => {
+      if (error) {
+        return console.log(error)
+      }
+      console.log('Message sent: %s', info.messageId)
+    })
 
     // return response
     return new Response(
