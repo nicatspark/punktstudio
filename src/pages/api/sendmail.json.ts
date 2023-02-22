@@ -5,6 +5,7 @@ import nodemailer from 'nodemailer'
 
 export const post: APIRoute = async ({ request }) => {
   console.log('request', request)
+  console.log('email', import.meta.env.EMAIL)
 
   if (request.headers.get('Content-Type') === 'application/json') {
     const formData = await request.json()
