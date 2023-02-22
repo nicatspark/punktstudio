@@ -49,15 +49,9 @@ From: ${name} ${surname} • email: ${email} • tel: ${tel}
     })
 
     // return response
-    return new Response(
-      JSON.stringify({
-        message: 'Your name was: ' + name,
-        email: import.meta.env.EMAIL,
-      }),
-      {
-        status: 200,
-      }
-    )
+    return new Response(JSON.stringify(mailDetails), {
+      status: 200,
+    })
   }
   return new Response(null, { status: 400 })
 }
