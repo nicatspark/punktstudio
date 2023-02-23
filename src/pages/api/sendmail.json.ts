@@ -44,13 +44,19 @@ export const post: APIRoute = async ({ request }) => {
       mailDetails,
       import.meta.env.EMAIL
     )
-
-    let mailresult = mailTransporter.sendMail(mailDetails, (error, info) => {
-      if (error) {
-        return console.log('******* Error: ', error)
-      }
-      console.log('Message sent: %s', info.messageId)
-    })
+    let mailresult
+    try {
+      mailresult = await mailTransporter.sendMail(mailDetails)
+    } catch (error) {
+      console.log('******* Error: ', error)
+    }
+    console.log('Message sent: %s', mailresult?.messageId)
+    // let mailresult = await mailTransporter.sendMail(mailDetails, (error, info) => {
+    //   if (error) {
+    //     return console.log('******* Error: ', error)
+    //   }
+    //   console.log('Message sent: %s', info.messageId)
+    // })
 
     console.log('mailresult', mailresult)
 
