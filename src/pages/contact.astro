@@ -46,7 +46,7 @@ import Layout from '../layouts/Layout.astro'
           </div></div
         >
 
-        <form id='form' onsubmit='return false;'>
+        <form id='form' onsubmit='event => event.preventDefault();return false'>
           <div class='columns'>
             <fieldset>
               <label for='name'>Name<sup>*</sup></label>
