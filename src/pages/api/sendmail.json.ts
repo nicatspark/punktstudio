@@ -18,7 +18,10 @@ export const post: APIRoute = async ({ request }) => {
     ----------------------------------------------------------------------
     From: ${name} ${surname} • email: ${email} • tel: ${tel}
     `
-    const html = `<div style="margin: 20px auto;font-family: Helvetica, Verdana, sans-serif">${message}</div>`
+    const html = `<div style="margin: 20px auto;font-family: Helvetica, Verdana, sans-serif">${message.replace(
+      /[\r\n]/g,
+      '<br>'
+    )}</div>`
 
     // sendmail
     let mailTransporter = nodemailer.createTransport({
@@ -51,12 +54,6 @@ export const post: APIRoute = async ({ request }) => {
       console.log('******* Error: ', error)
     }
     console.log('Message sent: %s', mailresult?.messageId)
-    // let mailresult = await mailTransporter.sendMail(mailDetails, (error, info) => {
-    //   if (error) {
-    //     return console.log('******* Error: ', error)
-    //   }
-    //   console.log('Message sent: %s', info.messageId)
-    // })
 
     console.log('mailresult', mailresult)
 
