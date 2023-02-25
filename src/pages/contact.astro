@@ -19,7 +19,7 @@ import Layout from '../layouts/Layout.astro'
       <div class='contactpage'>
         <div class='vcard'
           ><div>
-            <!-- <GoogleMap /> -->
+            <GoogleMap />
             <p
               ><strong>Studiopunkt</strong><br /><br />Address: Sofia, Bulgaria<br
               />
@@ -171,9 +171,18 @@ import Layout from '../layouts/Layout.astro'
       if (data.success) {
         get('subject').value = ''
         get('message').value = ''
+        displayToaster('👍 Message was sent successfully')
       } else {
-        alert('Could not send message.')
+        displayToaster('💩 Could not send message.', 'error')
       }
+    }
+
+    function displayToaster(message, type = 'success') {
+      document.body.dispatchEvent(
+        new CustomEvent('TOASTER', {
+          detail: [message, 5, type],
+        })
+      )
     }
   </script>
 </Layout>
