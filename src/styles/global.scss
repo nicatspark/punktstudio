@@ -133,3 +133,22 @@ a {
     }
   }
 }
+
+/** loader animation */
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  animation-fill-mode: both;
+  font-size: 7px;
+}
+.loader {
+  color: #666;
+  position: relative;
+  text-indent: -9999em;
+  transform: translateZ(0);
+  animation-delay: -0.16s;
+}
+/* -- end loader --*/

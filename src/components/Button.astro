@@ -10,6 +10,7 @@ interface Props {
   id?: string
   tooltip?: string
   type?: 'submit'
+  loading?: boolean
 }
 const {
   href,
@@ -22,6 +23,7 @@ const {
   id,
   tooltip,
   type = 'a',
+  loading,
 } = Astro.props
 
 const Tag = type === 'submit' ? 'button' : 'a'

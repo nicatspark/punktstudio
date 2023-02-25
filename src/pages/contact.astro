@@ -73,7 +73,10 @@ import Layout from '../layouts/Layout.astro'
             <label for='tel'>Phone number</label>
             <input type='tel' id='tel' value='' />
           </fieldset>
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>
+            <div class='pending'>Submit</div>
+            <div class='loader'></div>
+          </Button>
         </form>
       </div>
     </article></div
@@ -82,10 +85,15 @@ import Layout from '../layouts/Layout.astro'
       document.getElementById(id) || {
         value: '',
       }
+
     const submitForm = () => {
+      if (formState().isLoading()) return
+      formState().setToLoading(true)
       saveInput()
       sendmail()
     }
+
+    // localStorage code
     const getFormData = () => {
       const store = Object.create(null)
       store.name = get('name')?.value
@@ -107,6 +115,34 @@ import Layout from '../layouts/Layout.astro'
       get('email').value = store.email || ''
       get('tel').value = store.tel || ''
     }
+    // End: localStorage
+
+    const formState = () => {
+      const inputs = [...document.querySelectorAll('input')]
+      const button = document.querySelector('button')
+      const form = document.querySelector('form')
+      const textarea = document.querySelector('textarea')
+      const disabled = [...document.querySelectorAll('[disabled]')]
+
+      const loading = (isLoading) => {
+        if (!form || !button) return
+        if (isLoading) {
+          inputs.forEach((inpt) => {
+            inpt.setAttribute('disabled', 'true')
+          })
+          textarea.setAttribute('disabled', 'true')
+          form.classList.add('loading')
+          return
+        }
+        form.classList.remove('loading')
+        disabled.forEach((inpt) => inpt.removeAttribute('disabled'))
+      }
+
+      const isLoading = form.classList.contains('loading')
+
+      return { setToLoading, isLoading }
+    }
+
     const submitBtn = document.querySelector('[type="submit"]')
     submitBtn?.addEventListener('click', submitForm)
     retrieveInfo()
@@ -131,6 +167,13 @@ import Layout from '../layouts/Layout.astro'
           throw new Error('Network error.')
         })
       console.log(data)
+      formState().setToLoading(false)
+      if (data.success) {
+        get('subject').value = ''
+        get('message').value = ''
+      } else {
+        alert('Could not send message.')
+      }
     }
   </script>
 </Layout>
@@ -156,6 +199,7 @@ import Layout from '../layouts/Layout.astro'
   form {
     display: flex;
     flex-flow: column;
+    position: relative;
     fieldset {
       margin: 1rem 0;
       border: none;
@@ -167,6 +211,7 @@ import Layout from '../layouts/Layout.astro'
       border-bottom: 1px solid var(--medium-dark);
       padding: 1em 1em;
       position: relative;
+      color: #555;
     }
     textarea {
       min-height: 8rem;
@@ -176,6 +221,29 @@ import Layout from '../layouts/Layout.astro'
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       color: #999;
+    }
+    & [disable='true'] {
+      pointer-events: none;
+      // opacity: 0.5;
+    }
+    button {
+      .loader {
+        display: none;
+      }
+    }
+    &.loading {
+      button {
+        .pending {
+          display: none;
+        }
+        .loader {
+          display: block;
+          margin: auto;
+        }
+      }
+      & > :is(fieldset, .columns) {
+        opacity: 0.5;
+      }
     }
   }
 

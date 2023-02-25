@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer'
 
 const emailTo = import.meta.env.EMAIL
 const emailToPass = import.meta.env.PASS
+const host = import.meta.env.HOST
 
 export const post: APIRoute = async ({ request }) => {
   // console.log('request', request)
@@ -25,7 +26,7 @@ export const post: APIRoute = async ({ request }) => {
 
     // sendmail
     let mailTransporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host,
       port: 587,
       secure: false,
       auth: {
@@ -58,7 +59,7 @@ export const post: APIRoute = async ({ request }) => {
     console.log('mailresult', mailresult)
 
     // return response
-    return new Response(JSON.stringify(mailDetails), {
+    return new Response(JSON.stringify({ ...mailDetails, success: true }), {
       status: 200,
     })
   }
