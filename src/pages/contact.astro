@@ -124,7 +124,7 @@ import Layout from '../layouts/Layout.astro'
       const textarea = document.querySelector('textarea')
       const disabled = [...document.querySelectorAll('[disabled]')]
 
-      const loading = (isLoading) => {
+      const setToLoading = (isLoading) => {
         if (!form || !button) return
         if (isLoading) {
           inputs.forEach((inpt) => {
